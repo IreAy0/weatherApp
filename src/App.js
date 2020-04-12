@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable react/no-unused-state */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 
@@ -38,19 +38,18 @@ export default class App extends Component {
 
 
   renderContent() {
-    // destructured from this.state.errormessage to const {state} = this.state
-    const { state } = this.state;
-    if (state.errorMessage && !state.lat && !state.lng) {
+    const { title } = this.state;
+    if (this.state.errorMessage && !title.lat && !this.state.lng) {
       return (
         <div>
           Error:
-          {state.errorMessage}
+          {this.state.errorMessage}
         </div>
       );
     }
 
-    if (!state.errorMessage && state.lat && state.lng) {
-      return <SeasonDisplay lat={state.lat} />;
+    if (!this.state.errorMessage && this.state.lat && this.state.lng) {
+      return <SeasonDisplay lat={this.state.lat} />;
     }
 
     return <Spinner message="Please allow your location" />;
