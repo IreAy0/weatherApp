@@ -1,5 +1,6 @@
 import React from 'react';
-import './seasonDisplay.css'; // \r\n
+import './seasonDisplay.css';
+import PropTypes from 'prop-types';
 
 const seasonConfig = {
   summer: {
@@ -19,8 +20,10 @@ const getSeason = (lat, month) => {
   return lat > 0 ? 'winter ' : 'summer';
 };
 
-//destructuring props props become ({lat})
-const seasonDisplay = {lat}) => {
+// destructuring props props become ({lat})
+
+
+const seasonDisplay = ({ lat }) => {
   const season = getSeason(lat, new Date().getMonth());
   //  const text = season === 'winter' ? 'Burr, it is chilly' : 'Lets hit the beach';
   //   const icon = season === 'winter' ? 'snowflake' : 'sun';
@@ -33,6 +36,10 @@ const seasonDisplay = {lat}) => {
       <i className={`icon-right massive  ${iconName} icon`} />
     </div>
   );
+};
+
+seasonDisplay.propTypes = {
+  lat: PropTypes.number.isRequired,
 };
 
 export default seasonDisplay;

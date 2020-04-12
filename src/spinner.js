@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const spinner = ({ message }) => (
   <div className="ui active dimmer">
@@ -7,13 +8,8 @@ const spinner = ({ message }) => (
     </div>
   </div>
 );
-spinner.defaultProps = {
-  message: 'Loading...',
-};
 
 spinner.propTypes = {
   message: PropTypes.string.isRequired,
-},
-
-
+};
 export default spinner;
